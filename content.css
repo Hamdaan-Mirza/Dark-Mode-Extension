@@ -1,0 +1,15 @@
+html.dark-mode-enabled,
+html.dark-mode-enabled body {
+  background: #111111 !important;
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+html.dark-mode-enabled img,
+html.dark-mode-enabled video,
+html.dark-mode-enabled picture,
+html.dark-mode-enabled picture *,
+html.dark-mode-enabled svg,
+html.dark-mode-enabled canvas,
+html.dark-mode-enabled iframe {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
