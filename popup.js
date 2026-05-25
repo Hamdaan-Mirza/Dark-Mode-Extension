@@ -13,7 +13,7 @@ const getTabStates = async () => {
   return data[STORAGE_KEY] ?? {};
 };
 
-const updatePopupUi = (enabled) => {
+const updatePopupUI = (enabled) => {
   toggleButton.dataset.enabled = String(enabled);
   toggleButton.textContent = enabled ? "Disable" : "Enable";
   statusText.textContent = enabled
@@ -30,7 +30,7 @@ const initialize = async () => {
   }
 
   const tabStates = await getTabStates();
-  updatePopupUi(Boolean(tabStates[String(activeTab.id)]));
+  updatePopupUI(Boolean(tabStates[String(activeTab.id)]));
 
   toggleButton.addEventListener("click", async () => {
     const enabled = toggleButton.dataset.enabled === "true";
@@ -40,7 +40,7 @@ const initialize = async () => {
       enabled: !enabled
     });
 
-    updatePopupUi(Boolean(response?.enabled));
+    updatePopupUI(Boolean(response?.enabled));
   });
 };
 
