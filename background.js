@@ -18,11 +18,31 @@ const setTabState = async (tabId, enabled) => {
   await chrome.storage.local.set({ [STORAGE_KEY]: tabStates });
 };
 
-const applyDarkModeState = async (tabId, enabled) => {
+const pingContentScript = async (tabId) => {
+  try {
+    const response = await chrome.tabs.sendMessage(tabId, {
+      type: "PING_DARK_MODE_CONTENT_SCRIPT"
+    });
+    return Boolean(response?.ready);
+  } catch {
+    return false;
+  }
+};
+
+const ensureContentScript = async (tabId) => {
+  const alreadyReady = await pingContentScript(tabId);
+  if (alreadyReady) {
+    return;
+  }
+
   await chrome.scripting.executeScript({
     target: { tabId },
     files: ["content.js"]
   });
+};
+
+const applyDarkModeState = async (tabId, enabled) => {
+  await ensureContentScript(tabId);
 
   if (enabled) {
     await chrome.scripting.insertCSS({

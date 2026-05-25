@@ -44,6 +44,8 @@ const initialize = async () => {
   });
 };
 
-initialize().catch(() => {
-  statusText.textContent = "Failed to load extension state.";
+initialize().catch((error) => {
+  console.error("Failed to initialize popup state", error);
+  statusText.textContent =
+    "Unable to connect to extension. Try refreshing the page.";
 });
