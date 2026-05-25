@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Universal Dark Mode",
+  "description": "Toggle a universal dark mode filter on the active tab.",
+  "version": "1.0.0",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Universal Dark Mode"
+  }
+}

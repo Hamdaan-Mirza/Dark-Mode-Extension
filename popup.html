@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Dark Mode</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        min-width: 220px;
+        font-family: Arial, sans-serif;
+        background: #111827;
+        color: #f9fafb;
+      }
+
+      main {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      button {
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 12px;
+        cursor: pointer;
+        font-weight: 600;
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      button[data-enabled="true"] {
+        background: #16a34a;
+      }
+
+      p {
+        margin: 0;
+        font-size: 12px;
+        color: #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Universal Dark Mode</h1>
+      <button id="toggleButton" type="button" data-enabled="false">Enable</button>
+      <p id="statusText">Dark mode is off for this tab.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
