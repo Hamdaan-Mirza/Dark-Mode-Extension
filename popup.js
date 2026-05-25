@@ -45,7 +45,10 @@ const initialize = async () => {
 };
 
 initialize().catch((error) => {
-  console.error("Failed to initialize popup state", error);
+  console.error(
+    "Failed to initialize popup: unable to query active tab or retrieve stored state",
+    error
+  );
   statusText.textContent =
     "Unable to connect to extension. Try refreshing the page.";
 });
