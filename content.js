@@ -1,9 +1,9 @@
 (() => {
-  if (window.__universalDarkModeInitialized) {
+  if (window.universalDarkModeExtensionInitialized) {
     return;
   }
 
-  window.__universalDarkModeInitialized = true;
+  window.universalDarkModeExtensionInitialized = true;
 
   chrome.runtime.onMessage.addListener((message) => {
     if (message?.type !== "APPLY_DARK_MODE") {

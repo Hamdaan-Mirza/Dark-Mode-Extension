@@ -47,11 +47,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return;
   }
 
-  (async () => {
+  const handleToggle = async () => {
     const tabId = Number(message.tabId ?? sender.tab?.id);
-    if (!tabId) {
-      sendResponse({ enabled: false, error: "Missing tab id." });
-      return;
+    if (Number.isNaN(tabId) || tabId <= 0) {
+      return { enabled: false, error: "Missing tab id." };
     }
 
     const enabled = Boolean(message.enabled);
@@ -59,10 +58,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     await applyDarkModeState(tabId, enabled);
     await setTabState(tabId, enabled);
 
-    sendResponse({ enabled });
-  })().catch(() => {
-    sendResponse({ enabled: false, error: "Failed to update dark mode." });
-  });
+    return { enabled };
+  };
+
+  handleToggle()
+    .then(sendResponse)
+    .catch(() => {
+      sendResponse({ enabled: false, error: "Failed to update dark mode." });
+    });
 
   return true;
 });
