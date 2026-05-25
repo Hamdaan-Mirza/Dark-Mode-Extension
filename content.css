@@ -1,6 +1,6 @@
 html.dark-mode-enabled,
 html.dark-mode-enabled body {
-  background: #111111 !important;
+  background: #111827 !important;
   filter: invert(1) hue-rotate(180deg) !important;
 }
 

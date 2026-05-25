@@ -69,7 +69,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   const handleToggle = async () => {
     const tabId = Number(message.tabId ?? sender.tab?.id);
-    if (Number.isNaN(tabId) || tabId < 0) {
+    if (!Number.isFinite(tabId) || tabId < 0) {
       return { enabled: false, error: "Missing tab ID." };
     }
 
