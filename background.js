@@ -93,3 +93,4 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   return true;
 });
+console.log("Universal Dark Mode service worker is running.");

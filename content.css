@@ -1,15 +1,21 @@
-html.dark-mode-enabled,
-html.dark-mode-enabled body {
-  background: #111827 !important;
-  filter: invert(1) hue-rotate(180deg) !important;
+/* 1. Apply the inversion filter */
+html.dark-mode-enabled {
+    filter: invert(100%) hue-rotate(180deg) !important;
+    
+    /* Force a solid white background so the filter has something to invert into dark */
+    background-color: #ffffff !important; 
 }
 
+/* 2. Ensure the body cooperates so it doesn't leave transparent gaps */
+html.dark-mode-enabled body {
+    background-color: transparent !important;
+}
+
+/* 3. Re-invert media so images and videos look normal instead of like x-rays */
 html.dark-mode-enabled img,
 html.dark-mode-enabled video,
 html.dark-mode-enabled picture,
-html.dark-mode-enabled picture *,
-html.dark-mode-enabled svg,
 html.dark-mode-enabled canvas,
-html.dark-mode-enabled iframe {
-  filter: invert(1) hue-rotate(180deg) !important;
+html.dark-mode-enabled svg {
+    filter: invert(100%) hue-rotate(180deg) !important;
 }
